@@ -4,3 +4,6 @@
 .search {
     background-color: rgb(128, 128, 128, 0.5) !important;
 }
+.navbar-toggler-icon {
+    filter: invert(1);
+}
