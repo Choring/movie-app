@@ -21,8 +21,8 @@ export const AppLayout = () => {
                     style={{ maxHeight: '100px' }}
                     navbarScroll
                 >
-                    <Nav.Link href="/" className='text-white'>Home</Nav.Link>
-                    <Nav.Link href="/movies" className='text-white'>Movies</Nav.Link>
+                    <Nav.Link href="/" className='text-white fw-bold'>홈</Nav.Link>
+                    <Nav.Link href="/movies" className='text-white fw-bold'>영화</Nav.Link>
                 </Nav>
                 <Form className="d-flex">
                     <Form.Control

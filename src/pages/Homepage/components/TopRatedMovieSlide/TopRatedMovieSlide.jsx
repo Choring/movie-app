@@ -21,7 +21,7 @@ export const TopRatedMovieSlide = () => {
         <div className='item-container'>   
             <Container>
               <MovieSlider 
-                title={"TopRated Movies"} 
+                title={"가장 인기있는 영화"} 
                 movies={data} 
                 responsive={responsive}
               />

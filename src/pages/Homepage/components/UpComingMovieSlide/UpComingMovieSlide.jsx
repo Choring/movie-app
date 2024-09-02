@@ -22,7 +22,7 @@ export const UpComingMovieSlide = () => {
         <div className='item-container'>   
             <Container>
               <MovieSlider 
-                title={"UpComing Movies"} 
+                title={"개봉 예정 영화"} 
                 movies={data} 
                 responsive={responsive}
               />

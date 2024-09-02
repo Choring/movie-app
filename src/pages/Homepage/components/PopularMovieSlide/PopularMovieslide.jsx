@@ -17,10 +17,10 @@ export const PopularMovieslide = () => {
     
 
     return (
-        <div className='item-container'>  
+        <div className='item-container pt-3'>  
             <Container>
                 <MovieSlider 
-                    title={"Popular Movies"} 
+                    title={"인기있는 영화"} 
                     movies={data} 
                     responsive={responsive} 
                 />
