@@ -4,6 +4,9 @@
 .search {
     background-color: rgb(128, 128, 128, 0.5) !important;
 }
+.search::placeholder {
+    color: white !important;
+}
 .navbar-toggler-icon {
     filter: invert(1);
 }
