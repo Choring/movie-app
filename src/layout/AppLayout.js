@@ -9,8 +9,8 @@ import { Outlet } from 'react-router-dom';
 export const AppLayout = () => {
   return (
     <div>
-        <Navbar expand="lg" className="bg-body-tertiary py-0">
-            <Container fluid className='nav-container'>
+        <Navbar expand="lg" className="py-0 nav-container">
+            <Container>
                 <Navbar.Brand href="#">
                     <img src='./cgvLogo.png' alt='logo' width={80} />
                 </Navbar.Brand>

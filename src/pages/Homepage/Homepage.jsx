@@ -13,10 +13,10 @@ import { UpComingMovieSlide } from './components/UpComingMovieSlide/UpComingMovi
 export const Homepage = () => {
   return (
     <div className='home-container'>
-      <Banner />
-      <PopularMovieslide />
-      <TopRatedMovieSlide />
-      <UpComingMovieSlide />
+        <Banner />
+        <PopularMovieslide />
+        <TopRatedMovieSlide />
+        <UpComingMovieSlide />
     </div>
   )
 }
