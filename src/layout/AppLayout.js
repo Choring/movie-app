@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Outlet } from 'react-router-dom';
 import { Footer } from './Footer/Footer';
+import { UpArrow } from '../components/UpArrow';
 
 export const AppLayout = () => {
   return (
@@ -39,6 +40,7 @@ export const AppLayout = () => {
         </Navbar>
         <Outlet />
         <Footer />
+        <UpArrow />
     </div>
     
   )

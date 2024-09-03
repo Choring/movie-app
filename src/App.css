@@ -1,3 +1,6 @@
+.root {
+    position: relative;
+}
 .nav-container {
     background-color: #2C292A;
 }
