@@ -5,7 +5,7 @@ import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 
 export const MovieCard = ({movie}) => {
     const {data:genreData} = useMovieGenreQuery();
-
+    console.log(movie);
     const showGenre = (genreIdList) => {
         if(!genreIdList) {return []};
         
@@ -19,7 +19,7 @@ export const MovieCard = ({movie}) => {
     
   return (
     <div 
-        style={{backgroundImage:"url("+`https://media.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`+")"}}
+        style={{backgroundImage:"url("+`https://media.themoviedb.org/t/p/w500/${movie.poster_path}`+")"}}
         className='movie-card'
     >
         <div className='overlay p-3'>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export const Footer = () => {
   return (
-    <div className="border border-start-0 border-start-0 border-dark-subtle pt-4" style={{background:"#2C292A"}}>
+    <div className="border border-start-0 border-start-0 border-dark-subtle pt-4" style={{background:"black"}}>
         <Container>
             <Row className='text-secondary'>
                 <Col md={6}>
