@@ -5,7 +5,7 @@ import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 
 export const MovieCard = ({movie}) => {
     const {data:genreData} = useMovieGenreQuery();
-    console.log(movie);
+
     const showGenre = (genreIdList) => {
         if(!genreIdList) {return []};
         
@@ -22,7 +22,7 @@ export const MovieCard = ({movie}) => {
         style={{backgroundImage:"url("+`https://media.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`+")"}}
         className='movie-card'
     >
-        <div className='overlay'>
+        <div className='overlay p-3'>
             <h5 className='fw-bold'>{movie.title}</h5>
             {showGenre(movie.genre_ids).map((id,index)=>{                
                 return <Badge bg="danger" key={index} style={{marginRight:"6px"}}>{id}</Badge>
@@ -38,9 +38,11 @@ export const MovieCard = ({movie}) => {
                          : '' }
                 <div>평점 {(movie.vote_average).toFixed(1)}</div>
                 <div>개봉일 {movie.release_date}</div>
-                <div>줄거리
-                    <p className='m-0' style={{fontSize:"0.7rem"}}>{movie.overview}</p>
-                </div>
+                {movie.overview ? 
+                    <div className='overview-box'>줄거리
+                        <p className='m-0' style={{fontSize:"0.7rem"}}>{movie.overview}</p>
+                    </div>
+                : ""}
             </div>
         </div>
     </div>
