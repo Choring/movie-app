@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Outlet } from 'react-router-dom';
+import { Footer } from './Footer/Footer';
 
 export const AppLayout = () => {
   return (
@@ -37,6 +38,7 @@ export const AppLayout = () => {
             </Container>
         </Navbar>
         <Outlet />
+        <Footer />
     </div>
     
   )

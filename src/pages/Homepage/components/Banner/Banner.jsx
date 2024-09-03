@@ -14,7 +14,7 @@ export const Banner = () => {
     }
 
     return (
-        <div style={{backgroundImage:"url("+`https://media.themoviedb.org/t/p/w533_and_h300_bestv2${data?.results[0].poster_path}`+")"}}
+        <div style={{backgroundImage:"url("+`https://image.tmdb.org/t/p/original/${data?.results[0].poster_path}`+")"}}
         className='banner'>
             <div className='text-white banner-text-area'>
                 <h1>{data?.results[0].title}</h1>
