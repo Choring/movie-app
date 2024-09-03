@@ -3,6 +3,7 @@
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 .banner:before {
     content:'';
@@ -13,18 +14,22 @@
     width:100%;
 }
 .banner-text-area{
-    width: 36%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center;    
     height: 100%;
     padding: 2rem;
 }   
 .banner-text-area > * {
     z-index: 2;
 }
+.overview {
+    width: 36%;
+}
 @media screen and (max-width: 768px) {
-    .banner-text-area {
-        width: 90%;
+    .overview {
+        width: 50%;
     }
+    
 }

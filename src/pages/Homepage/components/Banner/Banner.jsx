@@ -2,6 +2,7 @@ import React from 'react'
 import { usePopularMoviesQuery } from '../../../../hooks/usePopularMovies'
 import { Alert } from 'bootstrap';
 import './Banner.style.css';
+import { Container } from 'react-bootstrap';
 
 export const Banner = () => {
     const {data, isLoading, isError, error} = usePopularMoviesQuery();
@@ -16,10 +17,10 @@ export const Banner = () => {
     return (
         <div style={{backgroundImage:"url("+`https://image.tmdb.org/t/p/original/${data?.results[0].poster_path}`+")"}}
         className='banner'>
-            <div className='text-white banner-text-area'>
-                <h1>{data?.results[0].title}</h1>
-                <p>{data?.results[0].overview}</p>
-            </div>
+            <Container className='text-white banner-text-area'>
+                <h1>{data?.results[0].title}</h1> 
+                <p className='overview'>{data?.results[0].overview}</p>  
+            </Container>
         </div>
     )
 }
