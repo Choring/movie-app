@@ -50,7 +50,7 @@ export const MovieCard = ({movie}) => {
                         <p className='m-0' style={{fontSize:"0.7rem"}}>{movie.overview}</p>
                     </div>
                 : ""}
-                <div className='d-flex justify-content-center mt-1' onClick={() => setShowModal(true)}>
+                <div className='d-flex justify-content-center mt-1'>
                     <img src="/icon/play-circle.svg" alt="playButton" width={34} />
                 </div>
                 {/* {showModal && createPortal(
