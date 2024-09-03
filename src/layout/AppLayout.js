@@ -11,7 +11,7 @@ import { UpArrow } from '../components/UpArrow';
 export const AppLayout = () => {
   return (
     <div>
-        <Navbar expand="lg" className="py-0 nav-container">
+        <Navbar expand="lg" className="py-0 nav-container position-fixed w-100" style={{zIndex:"999"}}>
             <Container>
                 <Navbar.Brand href="#">
                     <img src='./cgvLogo.png' alt='logo' width={80} />
@@ -41,7 +41,7 @@ export const AppLayout = () => {
         <Outlet />
         <Footer />
         <UpArrow />
+        
     </div>
-    
   )
 }

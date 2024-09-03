@@ -2,10 +2,14 @@ import React from 'react'
 import { Badge } from 'react-bootstrap'
 import './MovieCard.style.css';
 import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
+// import { createPortal } from 'react-dom';
+// import { ModalContent } from '../../Modal/ModalContent.jsx';
+
 
 export const MovieCard = ({movie}) => {
     const {data:genreData} = useMovieGenreQuery();
-    console.log(movie);
+    // const [showModal, setShowModal] = useState(false);
+
     const showGenre = (genreIdList) => {
         if(!genreIdList) {return []};
         
@@ -16,7 +20,10 @@ export const MovieCard = ({movie}) => {
 
         return genreNameList
     };
-    
+
+    // useEffect(() => {
+    //     console.log(showModal);
+    // }, [showModal])
   return (
     <div 
         style={{backgroundImage:"url("+`https://media.themoviedb.org/t/p/w500/${movie.poster_path}`+")"}}
@@ -43,6 +50,13 @@ export const MovieCard = ({movie}) => {
                         <p className='m-0' style={{fontSize:"0.7rem"}}>{movie.overview}</p>
                     </div>
                 : ""}
+                {/* <div className='d-flex justify-content-center mt-1' onClick={() => setShowModal(true)}>
+                    <img src="/icon/play-circle.svg" alt="playButton" width={34} />
+                </div>
+                {showModal && createPortal(
+                    <ModalContent onClose={() => setShowModal(false)} />,
+                    document.body
+                )} */}
             </div>
         </div>
     </div>
