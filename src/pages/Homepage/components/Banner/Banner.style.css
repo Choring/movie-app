@@ -1,5 +1,5 @@
 .banner {
-    height: 56vh;
+    height: 70vh;
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9,7 +9,7 @@
     background:linear-gradient(to top, black, transparent);
     position: absolute;
     left:0;
-    height:56vh;
+    height:70vh;
     width:100%;
 }
 .banner-text-area{
@@ -22,4 +22,9 @@
 }   
 .banner-text-area > * {
     z-index: 2;
+}
+@media screen and (max-width: 768px) {
+    .banner-text-area {
+        width: 90%;
+    }
 }
