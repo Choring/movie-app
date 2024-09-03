@@ -30,7 +30,7 @@ export const UpArrow = () => {
     }, []);
 
     return (
-        <Container className='position-fixed' style={{ right: "50px", bottom: "50px", width: "fit-content" }}>
+        <Container className='position-fixed' style={{ right: "3%", bottom: "50px", width: "fit-content" }}>
             {showTopButton && (
                 <img 
                     src="/icon/arrow-up-circle.svg" 
