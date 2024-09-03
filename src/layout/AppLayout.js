@@ -23,8 +23,8 @@ export const AppLayout = () => {
                     style={{ maxHeight: '100px' }}
                     navbarScroll
                 >
-                    <Nav.Link href="/" className='text-white fw-bold'>홈</Nav.Link>
-                    <Nav.Link href="/movies" className='text-white fw-bold'>영화</Nav.Link>
+                    <Nav.Link href="/" className='text-white noto-medium'>홈</Nav.Link>
+                    <Nav.Link href="/movies" className='text-white noto-medium'>영화</Nav.Link>
                 </Nav>
                 <Form className="d-flex">
                     <Form.Control
@@ -33,7 +33,7 @@ export const AppLayout = () => {
                     className="me-2 search"
                     aria-label="Search"
                     />
-                    <Button variant="outline-danger">Search</Button>
+                    <Button variant="outline-danger noto-medium">Search</Button>
                 </Form>
                 </Navbar.Collapse>
             </Container>

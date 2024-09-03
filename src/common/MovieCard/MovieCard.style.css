@@ -41,3 +41,7 @@
     line-height: 1.2em;
     height: 7em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 }
+.release-date,
+.vote-average {
+    font-size: 0.8rem;
+}

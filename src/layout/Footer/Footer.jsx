@@ -9,17 +9,17 @@ export const Footer = () => {
             <Row className='text-secondary'>
                 <Col md={6}>
                     <div className='d-flex gap-3' style={{fontSize:"1rem", cursor:"pointer"}}>
-                        <div>회사소개</div>
-                        <div>서비스 소개</div>
-                        <div>이용약관</div>
-                        <div>개인정보 처리방침</div>
-                        <div>고객센터</div>
-                        <div>이벤트</div>
+                        <div className='noto-semi-bold'>회사소개</div>
+                        <div className='noto-semi-bold'>서비스 소개</div>
+                        <div className='noto-semi-bold'>이용약관</div>
+                        <div className='noto-semi-bold'>개인정보 처리방침</div>
+                        <div className='noto-semi-bold'>고객센터</div>
+                        <div className='noto-semi-bold'>이벤트</div>
                     </div>
                     <div className='d-flex gap-3 my-3' style={{fontSize:"0.8rem", cursor:"default"}}>
-                        <p>개발자:초링이</p>
-                        <p>개발직무:프론트엔드</p>
-                        <p>이메일:skyhonor201@gmail.com</p>
+                        <p className='noto-semi-bold'>개발자:초링이</p>
+                        <p className='noto-semi-bold'>개발직무:프론트엔드</p>
+                        <p className='noto-semi-bold'>이메일:skyhonor201@gmail.com</p>
                     </div>
                 </Col>
                 <Col md={6}>

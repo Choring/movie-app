@@ -14,3 +14,32 @@ code {
 #root {
   position: relative;
 }
+
+@font-face {
+  font-family: 'NotoSansBold';
+  src: url('./fonts/NotoSans/NotoSansKR-Bold.ttf');
+}
+@font-face {
+  font-family: 'NotoSansExtraBold';
+  src: url('./fonts/NotoSans/NotoSansKR-ExtraBold.ttf');
+}
+@font-face {
+  font-family: 'NotoSansExtraLight';
+  src: url('./fonts/NotoSans/NotoSansKR-ExtraLight.ttf');
+}
+@font-face {
+  font-family: 'NotoSansLight';
+  src: url('./fonts/NotoSans/NotoSansKR-Light.ttf');
+}
+@font-face {
+  font-family: 'NotoSansMedium';
+  src: url('./fonts/NotoSans/NotoSansKR-Medium.ttf');
+}
+@font-face {
+  font-family: 'NotoSansRegular';
+  src: url('./fonts/NotoSans/NotoSansKR-Regular.ttf');
+}
+@font-face {
+  font-family: 'NotoSansSemiBold';
+  src: url('./fonts/NotoSans/NotoSansKR-SemiBold.ttf');
+}
