@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import './MoviesPage.style.css';
 import { useSearchMovieQuery } from '../../hooks/useSearchMovie';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Alert } from 'bootstrap';
 import { Col, Container, Row, Spinner, Form } from 'react-bootstrap';
 import { MovieCard } from '../../common/MovieCard/MovieCard';
 import ReactPaginate from 'react-paginate';
 import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
+import { useDiscoverMovie } from '../../hooks/useDiscoveMovie';
+import { sortOption } from '../../constants/sortOption';
 
 //경로 2가지
 //nav바에서 클릭해서 온경우 => popularMovie 보여주기
@@ -19,14 +21,21 @@ import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 export const MoviesPage = () => {
   const [query, setQuery] = useSearchParams();
   const [page, setPage] = useState(1);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState();
+  const [sort, setSort] = useState('');
   const keyword = query.get("q");
   const {data:genreData} = useMovieGenreQuery();
+  const {data:sortData} = useDiscoverMovie();
+  const navigate = useNavigate();
 
   const {data,isLoading,isError,error} = useSearchMovieQuery({keyword,page});
   const handlePageClick =({selected}) => {
     setPage(selected + 1);
   }
+
+  useEffect(() => {
+      navigate(`/movies?q=${filter}`);
+  }, [filter])
   
   if(isLoading){
     return (
@@ -53,15 +62,17 @@ export const MoviesPage = () => {
               <Form.Select size="sm" onChange={(event) => setFilter(event.target.value)}>
                 <option>선택</option>
                 {genreData?.map((genre,index) => {
-                  return <option key={index}>{genre.name}</option>
+                  return <option key={index} >{genre.name}</option>
                 })}
               </Form.Select>
             </Row>
             <Row className='mt-4'>
               <p className='m-0 mb-2' style={{color:"white"}}>정렬기준</p>
-              <Form.Select size="sm">
+              <Form.Select size="sm" onChange={(event) => setSort(event.target.value)}>
                 <option>선택</option>
-                
+                { sortOption?.map((sort,index) => {
+                  return <option key={index} value={sort.type}>{sort.name}</option>
+                })}
               </Form.Select>
             </Row>
           </Col>
