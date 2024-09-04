@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './MoviesPage.style.css';
 import { useSearchMovieQuery } from '../../hooks/useSearchMovie';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -24,17 +24,15 @@ export const MoviesPage = () => {
   const {data:genreData} = useMovieGenreQuery();
   const navigate = useNavigate();
 
-  const {data,isLoading,isError,error} = useSearchMovieQuery({keyword,page});
+  const {data,isLoading,isError,error} = useSearchMovieQuery({keyword,page,filter});
   const handlePageClick =({selected}) => {
     setPage(selected + 1);
   }
 
-  const filterGenre = (event) => {
-    event.preventDetault();
-    setFilter(event.target.value);
+  useEffect(()=>{
     navigate(`/movies?with_genres=${filter}`)
-  }
-
+  },[filter])
+  
   if(isLoading){
     return (
       <div className='movies-container py-5' style={{height:"100vh"}}>
@@ -57,7 +55,7 @@ export const MoviesPage = () => {
           <Col lg={4} xs={12}>
             <Row>
               <p className='m-0 mb-2' style={{color:"white"}}>장르선택</p>
-              <Form.Select size="sm" onSubmit={(event)=>filterGenre(event)}>
+              <Form.Select size="sm" onChange={(event) => setFilter(event.target.value)}>
                 <option>선택</option>
                 {genreData?.map((genre,index) => {
                   return <option key={index}>{genre.name}</option>
