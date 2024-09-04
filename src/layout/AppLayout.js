@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -7,9 +7,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Footer } from './Footer/Footer';
 import { UpArrow } from '../components/UpArrow';
+import './AppLayout.style.css';
 
 export const AppLayout = () => {
     const [keyword, setKeyword] = useState("");
+    const [position, setPosition] = useState(false);
     const navigate= useNavigate();
 
     const searchByKeword = (event) => {
@@ -18,9 +20,26 @@ export const AppLayout = () => {
         navigate(`/movies?q=${keyword}`);
         setKeyword("");
     }
+    const handleScroll = () => {
+        // 일정 구간 스크롤이 내려가면 버튼을 보여준다.
+        if (window.scrollY > window.outerHeight / 8) setPosition(true);
+        else setPosition(false);
+    };
+
+    useEffect(() => {
+        // window에 scroll 이벤트를 추가
+        window.addEventListener('scroll', handleScroll);
+      
+        // 페이지를 벗어날 때 이벤트를 제거한다.
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+
+    }, [])
+
   return (
     <div>
-        <Navbar expand="lg" className="py-0 nav-container position-fixed w-100" style={{zIndex:"999"}}>
+        <Navbar expand="lg" className={`py-0 nav-container ${position === true ? "fixed-nav" : "" } w-100`} style={{zIndex:"999"}}>
             <Container>
                 <Navbar.Brand href="/">
                     <img src='./cgvLogo.png' alt='logo' width={80} />

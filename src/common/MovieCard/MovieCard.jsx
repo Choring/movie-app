@@ -9,7 +9,7 @@ import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 export const MovieCard = ({movie}) => {
     const {data:genreData} = useMovieGenreQuery();
     // const [showModal, setShowModal] = useState(false);
-
+    
     const showGenre = (genreIdList) => {
         if(!genreIdList) {return []};
         

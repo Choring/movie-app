@@ -12,7 +12,7 @@ import { UpComingMovieSlide } from './components/UpComingMovieSlide/UpComingMovi
 
 export const Homepage = () => {
   return (
-    <div className='home-container'>
+    <div className='home-container py-5'>
         <Banner />
         <PopularMovieslide />
         <TopRatedMovieSlide />

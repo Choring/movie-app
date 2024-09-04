@@ -1,0 +1,8 @@
+.fixed-nav {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(0);
+    transition: transform 0.5s ease;
+}
