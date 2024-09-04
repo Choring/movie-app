@@ -31,7 +31,7 @@ export const MovieCard = ({movie}) => {
     >
         <div className='overlay p-3'>
             <h5 className='fw-bold'>{movie.title}</h5>
-            {showGenre(movie.genre_ids).map((id,index)=>{                
+            {showGenre(movie.genre_ids)?.map((id,index)=>{                
                 return <Badge className='noto-light' bg="danger" key={index} style={{marginRight:"6px"}}>{id}</Badge>
             })}
             <div className='mt-2'>
@@ -43,7 +43,7 @@ export const MovieCard = ({movie}) => {
                         </div>
                     </>
                          : '' }
-                <div className='noto-light vote-average mb-1'>평점 {(movie.vote_average).toFixed(1)}</div>
+                <div className='noto-light vote-average mb-1'>평점 {(movie.vote_average)?.toFixed(1)}</div>
                 <div className='noto-light  release-date mb-1'>개봉일 {movie.release_date}</div>
                 {movie.overview ? 
                     <div className='noto-light overview-box'>줄거리 :
