@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './MoviesPage.style.css';
 import { useSearchMovieQuery } from '../../hooks/useSearchMovie';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Alert } from 'bootstrap';
 import { Col, Container, Row, Spinner, Form } from 'react-bootstrap';
 import { MovieCard } from '../../common/MovieCard/MovieCard';
@@ -22,16 +22,11 @@ export const MoviesPage = () => {
   const [filter, setFilter] = useState('');
   const keyword = query.get("q");
   const {data:genreData} = useMovieGenreQuery();
-  const navigate = useNavigate();
 
-  const {data,isLoading,isError,error} = useSearchMovieQuery({keyword,page,filter});
+  const {data,isLoading,isError,error} = useSearchMovieQuery({keyword,page});
   const handlePageClick =({selected}) => {
     setPage(selected + 1);
   }
-
-  useEffect(()=>{
-    navigate(`/movies?with_genres=${filter}`)
-  },[filter])
   
   if(isLoading){
     return (
