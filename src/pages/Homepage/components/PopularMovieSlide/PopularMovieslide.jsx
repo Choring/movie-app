@@ -3,13 +3,17 @@ import { usePopularMoviesQuery } from '../../../../hooks/usePopularMovies'
 import { Alert } from 'bootstrap';
 import { MovieSlider } from '../../../../common/MovieSlider/MovieSlider';
 import { responsive } from '../../../../constants/responsive';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 
 export const PopularMovieslide = () => {
     const {data, isLoading, isError, error} = usePopularMoviesQuery();
     
     if(isLoading){
-        return <h1 vaiant="danger">Loading...</h1>
+        return (
+            <div className='movies-container py-5' style={{ height: "100vh" }}>
+              <Spinner animation="border" variant="danger" />
+            </div>
+          );
     }
     if(isError){
         return <Alert vaiant="danger">{error.message}</Alert>

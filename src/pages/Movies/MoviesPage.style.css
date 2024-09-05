@@ -1,3 +1,42 @@
 .movies-container {
     background-color: black;
 }
+.pagination {
+    width: fit-content;
+    margin:0 auto;
+    margin-top: 30px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    list-style: none;
+  }
+.page-link {
+    padding: 8px 12px;
+    color: #dc3545; 
+    border: none !important;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    background: black !important;
+    color: white !important;
+    font-weight: bold;
+    font-size: 1.2rem !important;
+}
+
+.page-link:hover {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+}
+
+.page-item.active .page-link {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.page-item.disabled .page-link {
+    color: #ddd;
+}

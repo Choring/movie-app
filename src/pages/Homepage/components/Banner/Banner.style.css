@@ -1,9 +1,14 @@
+/* .section {
+    margin:0 auto;
+    max-width: 1290px;
+    width: 100%;
+} */
 .banner {
     height: 70vh;
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
-    
+    border-radius: 20px;
 }
 .banner:before {
     content:'';

@@ -12,7 +12,7 @@ export const MovieSlider = ({title,movies,responsive}) => {
             <h3 className='text-white mb-0 noto-bold'>{title}</h3>
             <Carousel
             infinite={true}
-            centerMode={true}
+            centerMode={false}
             itemClass='movie-silider p-1'
             containerClass='carousel-container'
             responsive={responsive}
