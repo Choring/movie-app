@@ -49,7 +49,7 @@ export const MoviesPage = () => {
 
   return (
     <div className='movies-container py-5'>
-      <Container>
+      <Container className='movie-container'>
         <Row>
           <Col lg={4} xs={12}>
             <Row>

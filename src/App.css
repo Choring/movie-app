@@ -10,8 +10,8 @@
 .search::placeholder {
     color: white !important;
 }
-.search:valid {
-    color: white;
+.search:valid, .search:focus {
+    color: white !important;
 }
 .navbar-toggler-icon {
     filter: invert(1);
