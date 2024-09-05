@@ -96,8 +96,8 @@ export const MoviesPage = () => {
               </>
             ) : (
               <Row>
-                <div style={{ height: "100vh" }}>
-                  <h1 style={{color:"white"}}>검색결과가 없습니다.</h1>
+                <div style={{ height: "100vh"}}>
+                  <h1 className='mt-3' style={{color:"white", width:"fit-content", margin:"0 auto"}}>검색결과가 없습니다.</h1>
                 </div>
               </Row>
             )}
