@@ -75,8 +75,8 @@ export const MoviesPage = () => {
                 <ReactPaginate className='pagination'
                   nextLabel=">"
                   onPageChange={handlePageClick}
-                  pageRangeDisplayed={3}
-                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  marginPagesDisplayed={0}
                   pageCount={data?.total_pages}
                   previousLabel="<"
                   pageClassName="page-item"
@@ -85,7 +85,7 @@ export const MoviesPage = () => {
                   previousLinkClassName="page-link"
                   nextClassName="page-item"
                   nextLinkClassName="page-link"
-                  breakLabel="..."
+                  breakLabel={false}
                   breakClassName="page-item"
                   breakLinkClassName="page-link"
                   containerClassName="pagination"
