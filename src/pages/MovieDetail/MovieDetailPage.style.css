@@ -7,6 +7,11 @@
     color: white;
     
 }
+.poster-box > img {
+    display: block;
+    margin: 0 auto;
+
+}
 .video-box {
     cursor: pointer;
 }
@@ -33,6 +38,9 @@
 }
 
 @media screen and (max-width:991px){
+    .poster-box {
+        width: 100%;
+    }
     .detail-box {
         flex-wrap:wrap;
     }

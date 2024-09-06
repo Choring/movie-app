@@ -43,8 +43,10 @@ export const MovieDetailPage = () => {
     <div className='detail-container py-5'>
       <Container style={{minHeight:"100vh"}}>
         <div className='detail-box d-flex gap-5'>
-          <Col className='h-100 w-auto' xs={2}>
-            <img src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie.poster_path}`} alt="poster" />
+          <Col className='h-100 flex-wrap' xs={2} lg={4}>
+            <div className='poster-box'>
+              <img src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie.poster_path}`} alt="poster" />
+            </div>
             {(videoData) ? 
               <div className='mt-3 video-box' onClick={() => setShowModal(true)}>
                 <button className='mx-auto d-block' style={{background:"none", border:"none"}}><img src="/icon/play-circle.svg" alt="playButton" width={50} /></button>
