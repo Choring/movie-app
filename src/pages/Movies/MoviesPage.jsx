@@ -15,9 +15,9 @@ export const MoviesPage = () => {
   const [keyword, setKeyword] = useState(keywordFromQuery || '');  // 초기 상태 설정
   const { data: genreData } = useMovieGenreQuery();
   const navigate = useNavigate();
-
+  
   const { data, isLoading, isError, error } = useSearchMovieQuery({ keyword, page });
-
+  
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
   };

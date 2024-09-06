@@ -8,7 +8,7 @@ const fetchSearchMovie = ({keyword,page}) => {
 
     return keyword 
         ? api.get(`/search/movie?language=${language}&${keywords}&${pages}`) 
-        : api.get(`/movie/popular?language=${language}&${page}`);
+        : api.get(`/movie/popular?language=${language}&${pages}`);
 }
 
 export const useSearchMovieQuery = ({keyword,page}) => {
