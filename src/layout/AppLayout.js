@@ -13,7 +13,8 @@ export const AppLayout = () => {
     const [keyword, setKeyword] = useState("");
     const [position, setPosition] = useState(false);
     const navigate= useNavigate();
-
+    const env = process.env;
+    env.PUBLIC_URL  = env.PUBLIC_URL || "";
     const searchByKeword = (event) => {
         event.preventDefault();
         //url을 바꿔주기
@@ -25,7 +26,7 @@ export const AppLayout = () => {
         if (window.scrollY > window.outerHeight / 8) setPosition(true);
         else setPosition(false);
     };
-
+    console.log(process.env);
     useEffect(() => {
         // window에 scroll 이벤트를 추가
         window.addEventListener('scroll', handleScroll);
@@ -42,7 +43,7 @@ export const AppLayout = () => {
         <Navbar expand="lg" className={`py-0 nav-container ${position === true ? "fixed-nav" : "" } w-100`} style={{zIndex:"999"}}>
             <Container>
                 <Navbar.Brand href="/">
-                    <img src='./cgvLogo.png' alt='logo' width={80} />
+                    <img src={process.env.PUBLIC_URL+`/cgvLogo.png`} alt='logo' width={80} />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
