@@ -7,6 +7,7 @@ import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 import { createPortal } from 'react-dom';
 import { ModalContent } from '../../Modal/ModalContent';
 import { useMovieVideo } from '../../hooks/useMovieVideo';
+import { useMovieActors } from '../../hooks/useMovieActors';
 
 export const MovieDetailPage = () => {
   const location = useLocation();
@@ -17,7 +18,8 @@ export const MovieDetailPage = () => {
   const [showAll, setShowAll] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const { data: videoData } = useMovieVideo({ movieId: movie.id });
-
+  const {data:actorData} = useMovieActors({movieId: movie.id});
+  console.log(actorData);
   const reviewsToShow = showAll ? reviews: reviews?.slice(0,3);
 
   const handleToggle2 = () => {
@@ -86,8 +88,51 @@ export const MovieDetailPage = () => {
             </div>
           </Col>
         </div>
-        <div>
-
+        <div className='actor-section mt-5'>
+          <div className='cast-section'>
+            <h3 className='noto-bold' style={{color:"white"}}>주요 출연진</h3>
+            <div className='actor-container d-flex gap-3'>
+              {actorData?.cast?.map((actor, index) => {
+                return <div className='actor-box p-3' key={index}>
+                  <img 
+                    src={actor.profile_path 
+                      ? `https://media.themoviedb.org/t/p/w138_and_h175_face/${actor.profile_path}` 
+                      : `${process.env.PUBLIC_URL}/no-user.svg`
+                    } 
+                    alt='actor'
+                    width={138} 
+                    height={175}
+                  />
+                  <div className='actor-info mt-2'>
+                    <p className='noto-medium'>{actor.name}</p>
+                    <p className='noto-regular'>{actor.original_name}</p>
+                  </div>
+                </div>
+              })}
+            </div>
+          </div>
+          <div className='crew-section mt-4'>
+            <h3 className='noto-bold' style={{color:"white"}}>주요 제작진</h3>
+            <div className='actor-container d-flex gap-3'>
+              {actorData?.crew?.map((actor, index) => {
+                return <div className='actor-box p-3' key={index}>
+                  <img 
+                    src={actor.profile_path 
+                      ? `https://media.themoviedb.org/t/p/w138_and_h175_face/${actor.profile_path}` 
+                      : `${process.env.PUBLIC_URL}/no-user.svg`
+                    } 
+                    alt='actor'
+                    width={138} 
+                    height={175}
+                  />
+                  <div className='actor-info mt-2'>
+                    <p className='noto-medium'>{actor.name}</p>
+                    <p className='noto-regular'>{actor.original_name}</p>
+                  </div>
+                </div>
+              })}
+            </div>
+          </div>
         </div>
       </Container>
       {showModal && createPortal(

@@ -36,6 +36,17 @@
     color: white;
     border: none;
 }
+.actor-container {
+    overflow-x: scroll;   
+}
+
+.actor-box {
+    width: fit-content;
+    border: 1px solid white;
+    border-radius: 8px;
+    background: white;
+    
+}
 
 @media screen and (max-width:991px){
     .poster-box {
