@@ -5,15 +5,14 @@ import YouTube from 'react-youtube';
 export const ModalContent = ({ onClose, videoKey }) => {
     
     return (
-        <>
+        <div>
             <div className="modal-overlay" onClick={onClose}></div>
-            <div className="movie-modal">
+            <div className="movie-modal" style={{zIndex:"9999"}}>
               <div className='video-container'>
                   <div className='d-flex justify-content-end '>
                     <button className='x-btn' onClick={onClose}>X</button>
                   </div>
                   <YouTube
-                    style={{zIndex:"9999"}}
                     videoId={videoKey}
                     opts={{
                       width: "100%",
@@ -29,6 +28,6 @@ export const ModalContent = ({ onClose, videoKey }) => {
                   />
               </div>
             </div>
-        </>
+        </div>
     );
 };

@@ -1,0 +1,47 @@
+.detail-container {
+    background:black;
+    height: 100%;
+}
+
+.movie-info {
+    color: white;
+    
+}
+.video-box {
+    cursor: pointer;
+}
+.review {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.2em;
+    height: 5em;
+    transition: height 0.3s ease;
+}
+.review.expanded {
+    height: auto; /* 전체 내용이 보이도록 */
+    -webkit-line-clamp: unset; /* 줄 수 제거 */
+}
+.more-btn,
+.all-reviw {
+    background: none;
+    color: white;
+    border: none;
+}
+
+@media screen and (max-width:991px){
+    .detail-box {
+        flex-wrap:wrap;
+    }
+    .detail-box > div {
+        width: 100%;
+    }
+    .detail-box > div:nth-child(1) {
+        display:flex;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+}
