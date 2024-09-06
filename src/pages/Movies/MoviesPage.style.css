@@ -40,6 +40,7 @@
     background-color: #dc3545;
     color: white;
     border-color: #dc3545;
+    border:2px solid red !important;
 }
 
 .page-item.disabled .page-link {
