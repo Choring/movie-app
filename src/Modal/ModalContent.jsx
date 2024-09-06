@@ -3,20 +3,21 @@ import './ModalContent.style.css';
 import YouTube from 'react-youtube';
 
 export const ModalContent = ({ onClose, videoKey }) => {
-    console.log(videoKey);
+    
     return (
         <>
             <div className="modal-overlay" onClick={onClose}></div>
             <div className="movie-modal">
-              <div>
-                  <div className='d-flex justify-content-end'>
-                    <button onClick={onClose}>X</button>
+              <div className='video-container'>
+                  <div className='d-flex justify-content-end '>
+                    <button className='x-btn' onClick={onClose}>X</button>
                   </div>
                   <YouTube
+                    style={{zIndex:"9999"}}
                     videoId={videoKey}
                     opts={{
-                      width: "560",
-                      height: "315",
+                      width: "100%",
+                      height: "auto",
                       playerVars: {
                         autoplay: 1, //자동재생 O
                         rel: 0, //관련 동영상 표시하지 않음 (근데 별로 쓸모 없는듯..)
@@ -25,7 +26,7 @@ export const ModalContent = ({ onClose, videoKey }) => {
                     }}
                     //이벤트 리스너 
                     onEnd={(e)=>{e.target.stopVideo(0);}}      
-                    />
+                  />
               </div>
             </div>
         </>
