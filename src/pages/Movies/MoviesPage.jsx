@@ -9,27 +9,44 @@ import ReactPaginate from 'react-paginate';
 import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 
 export const MoviesPage = () => {
-  const [query, setQuery] = useSearchParams();  // 쿼리 파라미터 읽기
-  const [page, setPage] = useState(1);
-  const keywordFromQuery = query.get('q');  // 쿼리에서 keyword 가져오기
-  const [keyword, setKeyword] = useState(keywordFromQuery || '');  // 초기 상태 설정
-  const { data: genreData } = useMovieGenreQuery();
   const navigate = useNavigate();
+  const [query, setQuery] = useSearchParams();  
+  const keywordFromQuery = query.get('q');
+  const genreFromQuery = query.get('g');
+  const [page, setPage] = useState(1);
+  const [keyword, setKeyword] = useState(keywordFromQuery || '');
+  const [genre, setGenre] =  useState(genreFromQuery || '');
+  const [sort, setSort] = useState('popularity.desc');
   
-  const { data, isLoading, isError, error } = useSearchMovieQuery({ keyword, page });
+  const { data: genreData } = useMovieGenreQuery();
+  const { data, isLoading, isError, error } = useSearchMovieQuery({ keyword, page, genre, sort });
   
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
   };
 
+  const handleRadioChange = (e) => {
+    setSort(e.target.value);
+  };
+  
   // keyword가 변경되면 navigate로 URL을 업데이트하고, 데이터를 다시 패치
   useEffect(() => {
-    setKeyword(keywordFromQuery || '');  // 쿼리가 변경될 때 keyword를 업데이트
+    setKeyword(keywordFromQuery || '');  
   }, [keywordFromQuery]);
 
   useEffect(() => {
-    navigate(`/movies?q=${keyword}`);  // keyword가 변경될 때마다 URL 업데이트
-  }, [keyword, navigate]);
+    if (keyword) {
+      navigate(`/movies?q=${keyword}`);
+    } else if (genre) {
+      navigate(`/movies?g=${genre}`);
+    } else {
+      navigate(`/movies`);
+    }
+  }, [keyword, genre, navigate]);
+
+  useEffect(() => {
+    (genre) ? navigate(`/movies?g=${genre}`) : navigate(`/movies?q=${keyword}`);
+  },[genre])
 
   if (isLoading) {
     return (
@@ -50,24 +67,43 @@ export const MoviesPage = () => {
   return (
     <div className='movies-container py-5'>
       <Container className='movie-container'>
-        <Row>
-          <Col lg={4} xs={12}>
-            <Row>
+          <Row xl={12} className='mb-4'>
+            <Col xl={6}>
               <p className='m-0 mb-2' style={{ color: "white" }}>장르선택</p>
-              <Form.Select size="sm" onChange={(event) => setKeyword(event.target.value)}>
+              <Form.Select size="sm" onChange={(event) => setGenre(event.target.value)}>
                 <option>선택</option>
                 {genreData?.map((genre, index) => {
-                  return <option key={index}>{genre.name}</option>;
+                  return <option key={index} value={genre.id}>{genre.name}</option>;
                 })}
               </Form.Select>
-            </Row>
-          </Col>
-          <Col lg={8} xs={12}>
+            </Col>
+            <Col className='d-flex gap-3 align-items-center' xl={6} style={{color:"white"}}>
+              <div className='mr-3'>
+                <input 
+                  type='radio' 
+                  name='popular' 
+                  value={'popularity.desc'}
+                  checked={sort === 'popularity.desc'}
+                  onChange={handleRadioChange}
+                />인기순(오름차순)
+              </div>
+              <div>
+                <input  
+                  type='radio' 
+                  name='popular' 
+                  value={'popularity.asc'} 
+                  checked={sort === 'popularity.asc'}
+                  onChange={handleRadioChange}
+                />인기순(내림차순)
+              </div>
+            </Col>
+          </Row>
+          <Col>
             {data?.results?.length > 0 ? (
               <>
                 <Row>
                   {data?.results.map((movie, index) => (
-                    <Col key={index} lg={4} xs={12}>
+                    <Col className='mb-5' key={index} lg={3} xs={12}>
                       <MovieCard movie={movie} />
                     </Col>
                   ))}
@@ -102,7 +138,6 @@ export const MoviesPage = () => {
               </Row>
             )}
           </Col>
-        </Row>
       </Container>
     </div>
   );

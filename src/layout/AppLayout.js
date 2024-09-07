@@ -25,7 +25,7 @@ export const AppLayout = () => {
         if (window.scrollY > window.outerHeight / 8) setPosition(true);
         else setPosition(false);
     };
-    console.log(process.env);
+    
     useEffect(() => {
         // window에 scroll 이벤트를 추가
         window.addEventListener('scroll', handleScroll);
