@@ -46,3 +46,8 @@
 .page-item.disabled .page-link {
     color: #ddd;
 }
+
+.movie-card.no-poster {
+    background-size:contain;
+    background-repeat: no-repeat;
+}

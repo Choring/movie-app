@@ -12,7 +12,7 @@ export const MovieCard = ({movie}) => {
     const {data:genreData} = useMovieGenreQuery();
     const [showModal, setShowModal] = useState(false);
     const { data: videoData } = useMovieVideo({ movieId: movie.id });
-
+    
     const showGenre = (genreIdList) => {
         if(!genreIdList) {return []};
         
@@ -29,8 +29,12 @@ export const MovieCard = ({movie}) => {
       };
   return (
     <div 
-        style={{backgroundImage:"url("+`https://media.themoviedb.org/t/p/w500/${movie.poster_path}`+")"}}
-        className='movie-card'
+        style={{backgroundImage:
+            (movie?.poster_path) 
+            ? "url("+`https://media.themoviedb.org/t/p/w500/${movie.poster_path}`+")"
+            : `url(${process.env.PUBLIC_URL}/no-poster.svg)`
+        }}
+        className={`movie-card ${movie?.poster_path ? 'poster' : 'no-poster' }`}
     >
         <div className='overlay p-3'>
             <div onClick={handleCardClick}>
