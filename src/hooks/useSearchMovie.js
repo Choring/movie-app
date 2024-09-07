@@ -7,7 +7,7 @@ const fetchSearchMovie = ({keyword,page,genre,sort}) => {
     const pages = page ? `page=${page}` : '';
     const sortby = sort ? `sort_by=${sort}` : 'sort_by=popularity.asc';
     const genres = genre ? `with_genres=${genre}` : '';
-    
+
     return keyword 
         ? api.get(`/search/movie?language=${language}&${keywords}&${pages}`)
         : api.get(`/discover/movie?language=${language}&${pages}&${genres}&${sortby}`);
