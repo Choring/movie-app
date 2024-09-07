@@ -16,16 +16,18 @@ export const AppLayout = () => {
 
     const searchByKeword = (event) => {
         event.preventDefault();
-        //url을 바꿔주기
-        navigate(`/movies?q=${keyword}`);
-        setKeyword("");
+        if(keyword){
+            //url을 바꿔주기
+            navigate(`/movies?q=${keyword}`);
+            setKeyword("");
+        }
     }
     const handleScroll = () => {
         // 일정 구간 스크롤이 내려가면 버튼을 보여준다.
         if (window.scrollY > window.outerHeight / 8) setPosition(true);
         else setPosition(false);
     };
-    
+
     useEffect(() => {
         // window에 scroll 이벤트를 추가
         window.addEventListener('scroll', handleScroll);
@@ -63,7 +65,7 @@ export const AppLayout = () => {
                     value={keyword}
                     onChange={(event) => setKeyword(event.target.value)}
                     />
-                    <Button variant="outline-danger noto-medium">Search</Button>
+                    <Button variant="outline-danger noto-medium" onClick={(event) => {searchByKeword(event)}}>Search</Button>
                 </Form>
                 </Navbar.Collapse>
             </Container>

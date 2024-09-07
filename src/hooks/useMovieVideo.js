@@ -9,7 +9,7 @@ export const useMovieVideo = ({ movieId }) => {
     return useQuery({
         queryKey: ['movie-video', movieId],
         queryFn: () => fetchMovieVideo({ movieId }),
-        select: (result) => result.data.results[1],
+        select: (result) => result.data.results[0],
         staleTime: 300000, // 5분
     });
 };
