@@ -29,9 +29,9 @@ export const MovieCard = ({movie}) => {
       };
   return (
     <div 
-        style={{backgroundImage:
-            (movie?.poster_path) 
-            ? "url("+`https://media.themoviedb.org/t/p/w500/${movie.poster_path}`+")"
+        style={{
+            backgroundImage: movie?.poster_path
+            ? `url(https://media.themoviedb.org/t/p/w500/${movie.poster_path})`
             : `url(${process.env.PUBLIC_URL}/no-poster.svg)`
         }}
         className={`movie-card ${movie?.poster_path ? 'poster' : 'no-poster' }`}
