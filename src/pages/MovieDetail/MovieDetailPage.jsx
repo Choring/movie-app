@@ -1,5 +1,5 @@
 import './MovieDetailPage.style.css';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Badge, Col, Container, Row } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom';
 import { useMovieReviews } from '../../hooks/useMovieReviews';
@@ -17,9 +17,9 @@ export const MovieDetailPage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { data: videoData } = useMovieVideo({ movieId: movie.id });
-  const {data:actorData} = useMovieActors({movieId: movie.id});
-  console.log(actorData);
+  const {data:videoData } = useMovieVideo({movieId: movie.id});
+  const {data:actorData, refetch: refetchActors} = useMovieActors({movieId: movie.id});
+  
   const reviewsToShow = showAll ? reviews: reviews?.slice(0,3);
 
   const handleToggle2 = () => {
@@ -40,6 +40,10 @@ export const MovieDetailPage = () => {
 
       return genreNameList
   };
+
+  useEffect(() => {
+    refetchActors();
+  }, [movie.id, refetchActors])
 
   return (
     <div className='detail-container py-5'>
