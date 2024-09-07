@@ -103,7 +103,7 @@ export const MoviesPage = () => {
               <>
                 <Row>
                   {data?.results.map((movie, index) => (
-                    <Col className='mb-5' key={index} lg={3} xs={12}>
+                    <Col className='mb-5 movie-card' key={index} xs={8} sm={6}  md={4} lg={3} >
                       <MovieCard movie={movie} />
                     </Col>
                   ))}
