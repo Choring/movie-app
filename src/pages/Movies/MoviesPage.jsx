@@ -71,7 +71,7 @@ export const MoviesPage = () => {
             <Col xl={6}>
               <p className='m-0 mb-2' style={{ color: "white" }}>장르선택</p>
               <Form.Select size="sm"  value={genreFromQuery || ''} onChange={(event) => setGenre(event.target.value)}>
-                <option value={''}>선택</option>
+                <option value={''}>전체</option>
                 {genreData?.map((genre, index) => {
                   return <option key={index} value={genre.id}>{genre.name}</option>;
                 })}
