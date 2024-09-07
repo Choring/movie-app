@@ -1,7 +1,7 @@
 import './MovieDetailPage.style.css';
 import React, { useEffect, useState } from 'react'
-import { Badge, Col, Container, Row } from 'react-bootstrap'
-import { useLocation } from 'react-router-dom';
+import { Badge, Col, Container } from 'react-bootstrap'
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useMovieReviews } from '../../hooks/useMovieReviews';
 import { useMovieGenreQuery } from '../../hooks/useMovieGenre';
 import { createPortal } from 'react-dom';
@@ -19,7 +19,8 @@ export const MovieDetailPage = () => {
   const [showModal, setShowModal] = useState(false);
   const {data:videoData } = useMovieVideo({movieId: movie.id});
   const {data:actorData, refetch: refetchActors} = useMovieActors({movieId: movie.id});
-  
+  const navigate = useNavigate();
+
   const reviewsToShow = showAll ? reviews: reviews?.slice(0,3);
 
   const handleToggle2 = () => {
@@ -45,6 +46,10 @@ export const MovieDetailPage = () => {
     refetchActors();
   }, [movie.id, refetchActors])
 
+  const handleGoBack = () => {
+    navigate(-1); // -1은 이전 페이지로 이동
+  };
+
   return (
     <div className='detail-container py-5'>
       <Container style={{minHeight:"100vh"}}>
@@ -66,8 +71,11 @@ export const MovieDetailPage = () => {
               : null
             }
           </Col>
-          <Col xs={9} className='movie-info'>
-            <h5 className='noto-bold'>{movie.title}</h5>
+          <Col xs={9} sm={8} className='movie-info'>
+            <div className='d-flex justify-content-between'>
+              <h5 className='noto-bold'>{movie.title}</h5>
+              <button className='back-btn noto-extra-light px-2' onClick={handleGoBack}>뒤로가기</button>
+            </div>
             {showGenre(movie.genre_ids)?.map((id,index)=>{                
                 return <Badge className='noto-extra-light' bg="danger" key={index} style={{marginRight:"6px"}}>{id}</Badge>
             })}
@@ -88,7 +96,7 @@ export const MovieDetailPage = () => {
                     </div>
                   ))
                 ) : (
-                    <p>No reviews available.</p>
+                    <p className='noto-extra-light'>리뷰가 없습니다.</p>
                   )}
                   { reviews?.length > 3 && (
                     <button onClick={handleToggle2} className='all-reviw noto-extra-light'>
