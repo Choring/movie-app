@@ -20,7 +20,7 @@ export const MovieDetailPage = () => {
   const {data:videoData } = useMovieVideo({movieId: movie.id});
   const {data:actorData, refetch: refetchActors} = useMovieActors({movieId: movie.id});
   const navigate = useNavigate();
-
+  console.log(actorData);
   const reviewsToShow = showAll ? reviews: reviews?.slice(0,3);
 
   const handleToggle2 = () => {
@@ -123,8 +123,8 @@ export const MovieDetailPage = () => {
                         height={175}
                       />
                       <div className='actor-info mt-2'>
-                        <p className='noto-medium'>{actor.name}</p>
-                        <p className='noto-regular'>{actor.original_name}</p>
+                        <p className='noto-medium mb-0'>{actor.name}</p>
+                        <p className='noto-regular mb-0'>{actor.character}</p>
                       </div>
                     </div>
                   })}
@@ -148,8 +148,8 @@ export const MovieDetailPage = () => {
                         height={175}
                       />
                       <div className='actor-info mt-2'>
-                        <p className='noto-medium'>{actor.name}</p>
-                        <p className='noto-regular'>{actor.original_name}</p>
+                        <p className='noto-medium mb-0'>{actor.name}</p>
+                        <p className='noto-regular mb-0'>{actor.department}</p>
                       </div>
                     </div>
                   })}
